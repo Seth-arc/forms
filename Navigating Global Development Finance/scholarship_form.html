@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AidData Scholarship Application - Navigating Global Development Finance Course</title>
+    <title>AidData Scholarship Application</title>
     
     <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -1085,7 +1085,7 @@
 
     <script>
         // Initialize EmailJS
-        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        emailjs.init("tHLlMDU6cDEkdxBfg");
 
         // Global variables
         let selectedScholarshipType = '';
@@ -1534,10 +1534,10 @@
                 errorMessage.style.display = 'none';
 
                 try {
-                    // Send email using EmailJS
-                    const response = await emailjs.send(
-                        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-                        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+                    // Send internal notification to training team
+                    await emailjs.send(
+                        'service_fg5k8q8',
+                        'template_b8otaj6',
                         {
                             to_email: 'training@aiddata.org',
                             from_name: data.firstName + ' ' + data.lastName,
@@ -1577,6 +1577,26 @@
                             hear_about: data.hear_about || 'Not specified',
                             
                             // Timestamp
+                            submission_date: new Date().toLocaleString()
+                        }
+                    );
+
+                    // Send confirmation email to user
+                    await emailjs.send(
+                        'service_fg5k8q8',
+                        'template_xvb981w',
+                        {
+                            to_email: data.email,
+                            from_name: 'AidData Training Team',
+                            from_email: 'training@aiddata.org',
+                            subject: 'Scholarship Application Confirmation',
+                            
+                            // User-relevant information only
+                            first_name: data.firstName,
+                            last_name: data.lastName,
+                            country: data.country,
+                            current_position: data.currentPosition,
+                            organization: data.organization,
                             submission_date: new Date().toLocaleString()
                         }
                     );

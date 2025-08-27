@@ -25,6 +25,11 @@
             flex-direction: column;
         }
 
+        body.slide-mode {
+            overflow: hidden;
+            height: 100vh;
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -342,6 +347,210 @@
             width: auto;
         }
 
+        /* Slide Introduction System */
+        .slide-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #ffffff;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            bottom: 100px;
+            padding: 30px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide-content {
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .slide h2 {
+            color: #115740;
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        .slide p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* Slide 2 specific styles */
+        .slide-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .slide-column {
+            background-color: #f8fcfa;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(17, 87, 64, 0.1);
+        }
+
+        .slide-column h3 {
+            color: #115740;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .slide-column p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .slide-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .slide-caption {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* Slide header styles */
+        .slide-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 30px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e9ecef;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide-header .logo {
+            height: 35px;
+            width: auto;
+        }
+
+        /* Navigation styles */
+        .slide-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            border-top: 1px solid #e9ecef;
+            background-color: #ffffff;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+        }
+
+        .nav-btn {
+            background-color: #115740;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .nav-btn:hover {
+            background-color: #0d4530;
+            transform: translateY(-1px);
+        }
+
+        .nav-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .nav-btn.secondary {
+            background-color: transparent;
+            color: #115740;
+            border: 2px solid #115740;
+        }
+
+        .nav-btn.secondary:hover {
+            background-color: #115740;
+            color: white;
+        }
+
+        /* Progress indicator */
+        .progress-indicator {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            transition: background-color 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background-color: #115740;
+        }
+
+        .progress-dot.completed {
+            background-color: #28a745;
+        }
+
+        /* Form container initially hidden */
+        .form-section-container {
+            display: none;
+        }
+
+        .form-section-container.active {
+            display: block;
+        }
+
         /* Form Validation Styles */
         .invalid {
             border-color: #e74c3c !important;
@@ -369,6 +578,95 @@
             .header {
                 padding-left: 15px;
                 padding-right: 15px;
+            }
+
+            /* Slide responsive styles */
+            .slide {
+                padding: 15px;
+                top: 60px;
+                bottom: 140px;
+            }
+
+            .slide h2 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            .slide p {
+                font-size: 15px;
+                margin-bottom: 15px;
+                line-height: 1.5;
+            }
+
+            .slide-content {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .slide-columns {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin: 20px 0;
+            }
+
+            .slide-column {
+                padding: 15px;
+            }
+
+            .slide-column h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .slide-column p {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .slide-image {
+                height: 140px;
+                object-fit: cover;
+            }
+
+            .slide-caption {
+                font-size: 12px;
+                line-height: 1.3;
+            }
+
+            .slide-header {
+                padding: 12px 15px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .slide-header .logo {
+                height: 26px;
+            }
+
+            .slide-navigation {
+                padding: 15px;
+                flex-direction: column-reverse;
+                gap: 12px;
+                height: 140px;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .nav-btn {
+                width: 100%;
+                max-width: 300px;
+                padding: 14px 20px;
+                font-size: 15px;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .progress-indicator {
+                justify-content: center;
             }
 
             .form-container {
@@ -445,6 +743,82 @@
                 font-size: 24px;
             }
 
+            /* Additional slide responsive styles for small screens */
+            .slide {
+                padding: 10px;
+                top: 55px;
+                bottom: 120px;
+            }
+
+            .slide h2 {
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+
+            .slide p {
+                font-size: 14px;
+                margin-bottom: 12px;
+                line-height: 1.4;
+            }
+
+            .slide-columns {
+                gap: 12px;
+                margin: 15px 0;
+            }
+
+            .slide-column {
+                padding: 12px;
+            }
+
+            .slide-column h3 {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+
+            .slide-column p {
+                font-size: 13px;
+                margin-bottom: 12px;
+            }
+
+            .slide-image {
+                height: 100px;
+            }
+
+            .slide-caption {
+                font-size: 11px;
+                line-height: 1.2;
+            }
+
+            .slide-header {
+                padding: 8px 10px;
+                height: 55px;
+            }
+
+            .slide-header .logo {
+                height: 22px;
+            }
+
+            .slide-navigation {
+                padding: 12px 10px;
+                height: 120px;
+                gap: 10px;
+            }
+
+            .nav-btn {
+                padding: 12px 15px;
+                font-size: 14px;
+                max-width: 280px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .progress-dot {
+                width: 8px;
+                height: 8px;
+            }
+
             .form-container {
                 padding: 15px;
                 border-radius: 8px;
@@ -514,6 +888,74 @@
             .form-container {
                 padding: 12px;
             }
+
+            /* Very small screen slide adjustments */
+            .slide {
+                padding: 8px;
+                top: 50px;
+                bottom: 110px;
+            }
+
+            .slide h2 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+            .slide p {
+                font-size: 13px;
+                margin-bottom: 10px;
+            }
+
+            .slide-column {
+                padding: 10px;
+            }
+
+            .slide-column h3 {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+
+            .slide-column p {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+
+            .slide-image {
+                height: 80px;
+            }
+
+            .slide-caption {
+                font-size: 10px;
+            }
+
+            .slide-header {
+                padding: 6px 8px;
+                height: 50px;
+            }
+
+            .slide-header .logo {
+                height: 18px;
+            }
+
+            .slide-navigation {
+                padding: 10px 8px;
+                height: 110px;
+                gap: 8px;
+            }
+
+            .nav-btn {
+                padding: 10px 12px;
+                font-size: 13px;
+                min-height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .progress-dot {
+                width: 6px;
+                height: 6px;
+            }
         }
     </style>
 </head>
@@ -526,8 +968,67 @@
             </a>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
+        <!-- Slide Introduction System -->
+        <div class="slide-container">
+            <!-- Header within slide container -->
+            <div class="slide-header">
+                <a href="https://aiddata.org">
+                    <img src="https://raw.githubusercontent.com/Seth-arc/scorms/main/Course_thumbnails/5e3c81fee74fc1743cc5f355_AidData_Logo--full_color.png" alt="AidData" class="logo" />
+                </a>
+            </div>
+            
+            <!-- Slide 1: Hybrid Model -->
+            <div class="slide active" id="slide1">
+                <div class="slide-content">
+                    <h2>Welcome to AidData Training</h2>
+                    <p>Traditional training methods—lectures, presentations, and theoretical discussions—have their place. But when it comes to preparing professionals to handle the interconnected challenges of modern work environments, they often fall short. Real-world problems rarely arrive neatly packaged with clear solutions. Instead, they involve multiple stakeholders, competing priorities, and high levels of uncertainty.</p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Data-to-Policy Curriculum and Innovative Strategies -->
+            <div class="slide" id="slide2">
+                <div class="slide-content">
+                    <h2>Our Approach</h2>
+                    <div class="slide-columns">
+                        <div class="slide-column">
+                            <center><h3>Data-to-Policy Curriculum</h3></center>
+                            <p>AidData data and tools are incorporated to empower policymakers, analysts, and journalists with the skills to transform data into insights and actionable decisions</p>
+                            <img src="assets/image_1 (data to policy).jpeg" alt="Data workshop" class="slide-image">
+                            <div class="slide-caption">John Custer, AidData: Deputy Director, Communications and Data Analytics leading a development finance data workshop.</div>
+                        </div>
+                        <div class="slide-column">
+                            <center><h3>Innovative Strategies</h3></center>
+                            <p>Technology-based delivery is used to ensure learners can effectively interpret data and implement solutions in real-world scenarios.</p>
+                            <img src="assets/image_2 (innovative strategies).jpg" alt="Data journalism simulation" class="slide-image">
+                            <div class="slide-caption">Sethu Nguna, AidData: Manager, Training and Instructional Design Manager leading a data journalism simulation session.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Traditional Training Limitations -->
+            <div class="slide" id="slide3">
+                <div class="slide-content">
+                    <h2>Beyond Traditional Training</h2>
+                    <p>AidData employs a hybrid model that combines foundational online courses, delivered through the William & Mary's Studio for Teaching and Learning Innovation, with engaging in-person workshops, simulations, and policy dialogues led by AidData subject matter experts.</p>
+                   
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="slide-navigation">
+                <button class="nav-btn secondary" id="prevBtn" disabled>Previous</button>
+                <div class="progress-indicator">
+                    <div class="progress-dot active" data-slide="1"></div>
+                    <div class="progress-dot" data-slide="2"></div>
+                    <div class="progress-dot" data-slide="3"></div>
+                </div>
+                <button class="nav-btn" id="nextBtn">Next</button>
+            </div>
+        </div>
+
+        <!-- Main Content (Form Section) -->
+        <div class="main-content form-section-container">
             <!-- Page Title -->
             <div class="page-title">
                 <h1>Professional Development Inquiry</h1>
@@ -771,16 +1272,120 @@
 
     <script>
         // Initialize EmailJS
-        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        emailjs.init("tHLlMDU6cDEkdxBfg");
 
         // Global variables
         let selectedTrainingType = '';
+        let currentSlide = 1;
+        const totalSlides = 3;
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
+            // Add slide mode class to body
+            document.body.classList.add('slide-mode');
+            
+            initializeSlideNavigation();
             initializeTrainingSelection();
             initializeFormValidation();
         });
+
+        // Slide navigation functionality
+        function initializeSlideNavigation() {
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const progressDots = document.querySelectorAll('.progress-dot');
+
+            // Next button click
+            nextBtn.addEventListener('click', function() {
+                if (currentSlide < totalSlides) {
+                    goToSlide(currentSlide + 1);
+                } else {
+                    // Show form after completing all slides
+                    showForm();
+                }
+            });
+
+            // Previous button click
+            prevBtn.addEventListener('click', function() {
+                if (currentSlide > 1) {
+                    goToSlide(currentSlide - 1);
+                }
+            });
+
+            // Progress dot clicks
+            progressDots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    goToSlide(index + 1);
+                });
+            });
+        }
+
+        function goToSlide(slideNumber) {
+            // Hide current slide
+            document.getElementById(`slide${currentSlide}`).classList.remove('active');
+            
+            // Show target slide
+            document.getElementById(`slide${slideNumber}`).classList.add('active');
+            
+            // Update current slide
+            currentSlide = slideNumber;
+            
+            // Update navigation buttons
+            updateNavigationButtons();
+            
+            // Update progress indicators
+            updateProgressIndicators();
+        }
+
+        function updateNavigationButtons() {
+            const nextBtn = document.getElementById('nextBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            
+            // Previous button
+            prevBtn.disabled = currentSlide === 1;
+            
+            // Next button text
+            if (currentSlide === totalSlides) {
+                nextBtn.textContent = 'Continue to Form';
+            } else {
+                nextBtn.textContent = 'Next';
+            }
+        }
+
+        function updateProgressIndicators() {
+            const progressDots = document.querySelectorAll('.progress-dot');
+            
+            progressDots.forEach((dot, index) => {
+                const slideNum = index + 1;
+                
+                // Remove all classes
+                dot.classList.remove('active', 'completed');
+                
+                // Add appropriate class
+                if (slideNum === currentSlide) {
+                    dot.classList.add('active');
+                } else if (slideNum < currentSlide) {
+                    dot.classList.add('completed');
+                }
+            });
+        }
+
+        function showForm() {
+            // Remove slide mode class from body to allow scrolling
+            document.body.classList.remove('slide-mode');
+            
+            // Hide slide container
+            document.querySelector('.slide-container').style.display = 'none';
+            
+            // Show form container
+            document.querySelector('.form-section-container').classList.add('active');
+            
+            // Scroll to top of page to show header and form properly
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
         // Training selection functionality
         function initializeTrainingSelection() {
@@ -932,10 +1537,10 @@
                 errorMessage.style.display = 'none';
 
                 try {
-                    // Send email using EmailJS
-                    const response = await emailjs.send(
-                        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-                        'YOUR_PROFESSIONAL_TEMPLATE_ID', // Replace with your professional development template ID
+                    // Send internal notification to training team
+                    await emailjs.send(
+                        'service_fg5k8q8',
+                        'template_pzpfatt',
                         {
                             to_email: 'training@aiddata.org',
                             from_name: data.firstName + ' ' + data.lastName,
@@ -967,6 +1572,27 @@
                             hear_about: data.hearAbout || 'Not specified',
                             
                             // Timestamp
+                            submission_date: new Date().toLocaleString()
+                        }
+                    );
+
+                    // Send confirmation email to user
+                    await emailjs.send(
+                        'service_fg5k8q8',
+                        'template_au0d4yd',
+                        {
+                            to_email: data.email,
+                            from_name: 'AidData Training Team',
+                            from_email: 'training@aiddata.org',
+                            subject: 'Training Inquiry Confirmation - ' + data.organizationName,
+                            
+                            // User-relevant information only
+                            first_name: data.firstName,
+                            last_name: data.lastName,
+                            organization_name: data.organizationName,
+                            training_topic: data.trainingTopic,
+                            training_delivery: selectedTrainingType,
+                            participant_count: data.participantCount,
                             submission_date: new Date().toLocaleString()
                         }
                     );
