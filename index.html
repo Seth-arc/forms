@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AidData Training Forms</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        /* Header */
+        .header {
+            padding: 30px 30px 20px 30px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .logo {
+            height: 35px;
+            width: auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px 30px;
+            flex: 1;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-title h1 {
+            color: #115740;
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background-color: #115740;
+            margin: 0 auto 20px auto;
+            opacity: 0.3;
+        }
+
+        .page-title p {
+            font-size: 16px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Form Cards */
+        .forms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .form-card {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .form-card:hover {
+            border-color: #115740;
+            box-shadow: 0 8px 25px rgba(17, 87, 64, 0.15);
+            transform: translateY(-3px);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .form-card h3 {
+            color: #115740;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .form-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .form-card .features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .form-card .features li {
+            color: #555;
+            font-size: 13px;
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .form-card .features li:before {
+            content: "✓";
+            color: #115740;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .form-button {
+            background-color: #115740;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .form-button:hover {
+            background-color: #0d4530;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Email Templates Section */
+        .templates-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .templates-section h2 {
+            color: #115740;
+            font-size: 28px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .templates-section p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .template-item {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .template-item h4 {
+            color: #115740;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .template-item p {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .template-link {
+            background-color: transparent;
+            color: #115740;
+            border: 2px solid #115740;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 12px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .template-link:hover {
+            background-color: #115740;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #115740;
+            padding: 25px 30px;
+            text-align: center;
+            color: white;
+            margin-top: auto;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #C8A882;
+            text-decoration: underline;
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255,255,255,0.3);
+            margin: 20px 0;
+        }
+
+        .wm-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+            }
+
+            .main-content,
+            .header {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .page-title h1 {
+                font-size: 28px;
+            }
+
+            .forms-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .form-card {
+                padding: 20px;
+            }
+
+            .templates-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <a href="https://aiddata.org">
+                <img src="https://raw.githubusercontent.com/Seth-arc/scorms/main/Course_thumbnails/5e3c81fee74fc1743cc5f355_AidData_Logo--full_color.png" alt="AidData" class="logo" />
+            </a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Page Title -->
+            <div class="page-title">
+                <h1>AidData Training Forms</h1>
+                <div class="divider"></div>
+                <p>Access our professional development inquiry form and scholarship application system. Each form includes automated email notifications for seamless processing.</p>
+            </div>
+
+            <!-- Form Cards -->
+            <div class="forms-grid">
+                <!-- Professional Development Inquiry -->
+                <a href="Navigating Global Development Finance/professional_development_inquiry.html" class="form-card">
+                    <h3>Professional Development Inquiry</h3>
+                    <p>Submit a training request for your organization. Our team will contact you within 2-3 business days with a customized proposal.</p>
+                    
+                    <ul class="features">
+                        <li>Interactive slide introduction to AidData Training</li>
+                        <li>Comprehensive organization and training requirements form</li>
+                        <li>Multiple delivery methods (Online, Multimodal, In-Person)</li>
+                        <li>Automatic confirmation email to inquirer</li>
+                        <li>Internal notification to training team</li>
+                        <li>Option to schedule immediate consultation</li>
+                    </ul>
+                    
+                    <div class="form-button">Access Training Inquiry Form</div>
+                </a>
+
+                <!-- Scholarship Application -->
+                <a href="Navigating Global Development Finance/scholarship_form.html" class="form-card">
+                    <h3>Scholarship Application</h3>
+                    <p>Apply for a scholarship to access the Navigating Global Development Finance course. Priority consideration for Global South applicants.</p>
+                    
+                    <ul class="features">
+                        <li>Comprehensive application with professional background</li>
+                        <li>Global South priority consideration system</li>
+                        <li>William & Mary affiliation verification</li>
+                        <li>Motivation and expectations assessment</li>
+                        <li>Automatic confirmation email to applicant</li>
+                        <li>5-7 business day review timeline</li>
+                    </ul>
+                    
+                    <div class="form-button">Access Scholarship Application</div>
+                </a>
+            </div>
+
+            <!-- Email Templates Section -->
+            <div class="templates-section">
+                <h2>Email Templates</h2>
+                <p>View the EmailJS templates used for automated notifications (for development reference)</p>
+                
+                <div class="templates-grid">
+                    <div class="template-item">
+                        <h4>Training Inquiry - Internal</h4>
+                        <p>Detailed notification sent to training team</p>
+                        <a href="Navigating Global Development Finance/Training_Inquiry_Internal_Template.html" class="template-link">View Template</a>
+                    </div>
+                    
+                    <div class="template-item">
+                        <h4>Training Inquiry - User Confirmation</h4>
+                        <p>Confirmation email sent to inquirer</p>
+                        <a href="Navigating Global Development Finance/Training_Inquiry_User_Confirmation_Template.html" class="template-link">View Template</a>
+                    </div>
+                    
+                    <div class="template-item">
+                        <h4>Scholarship Request - Internal</h4>
+                        <p>Application details sent to review team</p>
+                        <a href="Navigating Global Development Finance/Scholarship_Request_Internal_Template.html" class="template-link">View Template</a>
+                    </div>
+                    
+                    <div class="template-item">
+                        <h4>Scholarship Request - User Confirmation</h4>
+                        <p>Confirmation email sent to applicant</p>
+                        <a href="Navigating Global Development Finance/Scholarship_Request_User_Confirmation_Template.html" class="template-link">View Template</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Questions about training or scholarships?</p>
+            <p>
+                Email us at <a href="mailto:training@aiddata.org">training@aiddata.org</a> | 
+                Visit our <a href="https://aiddata.org/training">website</a>
+            </p>
+            
+            <div class="footer-divider"></div>
+            
+            <div>
+                <a href="https://www.wm.edu">
+                    <img src="https://cdn.prod.website-files.com/5914719ba6e62162556bd443/59d445067eedf20001205357_wm_vertical_single_line_white.png" alt="William & Mary" class="wm-logo" />
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
