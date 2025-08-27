@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AidData Professional Development Inquiry</title>
+    
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        /* Header */
+        .header {
+            padding: 30px 30px 20px 30px;
+            background-color: #ffffff;
+        }
+
+        .logo {
+            height: 35px;
+            width: auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 0 30px 40px 30px;
+            flex: 1;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            color: #115740;
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background-color: #115740;
+            margin: 0 auto 20px auto;
+            opacity: 0.3;
+        }
+
+        .page-title p {
+            font-size: 16px;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Form Styles */
+        .form-container {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+        }
+
+        .form-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            color: #115740;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-col {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="url"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            background-color: #ffffff;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #115740;
+            box-shadow: 0 0 0 2px rgba(17, 87, 64, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: auto;
+            margin: 4px 0 0 0;
+            flex-shrink: 0;
+        }
+
+        .checkbox-item label,
+        .radio-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        /* Training Options */
+        .training-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .training-option {
+            background-color: #ffffff;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .training-option:hover {
+            border-color: #115740;
+            box-shadow: 0 4px 12px rgba(17, 87, 64, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .training-option.selected {
+            border-color: #115740;
+            background-color: #f8fcfa;
+            box-shadow: 0 4px 12px rgba(17, 87, 64, 0.2);
+        }
+
+        .option-title {
+            color: #115740;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .option-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .option-features {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        /* Submit Button */
+        .submit-container {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .submit-btn {
+            background-color: #115740;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0d4530;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Loading and Success States */
+        .loading {
+            display: none;
+            margin-top: 15px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .success-message {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error-message {
+            display: none;
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #115740;
+            padding: 25px 30px;
+            text-align: center;
+            color: white;
+            margin-top: auto;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #C8A882;
+            text-decoration: underline;
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255,255,255,0.3);
+            margin: 20px 0;
+        }
+
+        .wm-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        /* Form Validation Styles */
+        .invalid {
+            border-color: #e74c3c !important;
+            box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1) !important;
+        }
+
+        .error-text {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+            }
+
+            .main-content,
+            .header {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .form-container {
+                padding: 20px;
+                margin: 20px 0;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .page-title h1 {
+                font-size: 28px;
+            }
+
+            .page-title p {
+                font-size: 14px;
+                padding: 0 10px;
+            }
+
+            .submit-btn {
+                width: 100%;
+                margin: 15px 0;
+            }
+
+            .training-options {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .training-option {
+                padding: 20px 15px;
+            }
+
+            .option-title {
+                font-size: 16px;
+            }
+
+            .option-description {
+                font-size: 13px;
+            }
+
+            .option-features {
+                font-size: 12px;
+                padding: 12px;
+            }
+
+            .section-title {
+                font-size: 18px;
+            }
+
+            .footer {
+                padding: 20px 15px;
+            }
+
+            .footer p {
+                font-size: 13px;
+            }
+
+            .wm-logo {
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content,
+            .header {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .page-title h1 {
+                font-size: 24px;
+            }
+
+            .form-container {
+                padding: 15px;
+                border-radius: 8px;
+            }
+
+            .training-option {
+                padding: 15px 12px;
+            }
+
+            .option-title {
+                font-size: 15px;
+                margin-bottom: 8px;
+            }
+
+            .option-description {
+                font-size: 12px;
+                margin-bottom: 12px;
+            }
+
+            .option-features {
+                font-size: 11px;
+                padding: 10px;
+            }
+
+            .section-title {
+                font-size: 16px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"],
+            input[type="number"],
+            input[type="url"],
+            select,
+            textarea {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+
+            .submit-btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .footer {
+                padding: 15px 10px;
+            }
+
+            .wm-logo {
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .training-option {
+                padding: 12px 10px;
+            }
+
+            .page-title h1 {
+                font-size: 20px;
+            }
+
+            .option-title {
+                font-size: 14px;
+            }
+
+            .form-container {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <a href="https://aiddata.org">
+                <img src="https://raw.githubusercontent.com/Seth-arc/scorms/main/Course_thumbnails/5e3c81fee74fc1743cc5f355_AidData_Logo--full_color.png" alt="AidData" class="logo" />
+            </a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Page Title -->
+            <div class="page-title">
+                <h1>Professional Development Inquiry</h1>
+                <div class="divider"></div>
+                <p>Request training solutions for your organization. Our training can be delivered in multiple formats to meet your team's needs.</p>
+            </div>
+
+            <!-- Inquiry Form -->
+            <form id="professionalForm" class="form-container">
+                <!-- Organization Information Section -->
+                <div class="form-section">
+                    <h3 class="section-title">Organization Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="organizationName">Organization Name <span class="required">*</span></label>
+                        <input type="text" id="organizationName" name="organizationName" required>
+                        <div class="error-text" id="organizationName-error">Please enter your organization name</div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="organizationType">Organization Type <span class="required">*</span></label>
+                            <select id="organizationType" name="organizationType" required>
+                                <option value="">Select organization type</option>
+                                <option value="Government Agency">Government Agency</option>
+                                <option value="International Organization">International Organization</option>
+                                <option value="Non-Governmental Organization">Non-Governmental Organization</option>
+                                <option value="Development Bank">Development Bank</option>
+                                <option value="Consulting Firm">Consulting Firm</option>
+                                <option value="Academic Institution">Academic Institution</option>
+                                <option value="Private Corporation">Private Corporation</option>
+                                <option value="Foundation">Foundation</option>
+                                <option value="Think Tank">Think Tank</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="error-text" id="organizationType-error">Please select organization type</div>
+                        </div>
+                        <div class="form-col">
+                            <label for="organizationSize">Organization Size</label>
+                            <select id="organizationSize" name="organizationSize">
+                                <option value="">Select size</option>
+                                <option value="1-10 employees">1-10 employees</option>
+                                <option value="11-50 employees">11-50 employees</option>
+                                <option value="51-200 employees">51-200 employees</option>
+                                <option value="201-1000 employees">201-1000 employees</option>
+                                <option value="1000+ employees">1000+ employees</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="country">Country <span class="required">*</span></label>
+                            <input type="text" id="country" name="country" required>
+                            <div class="error-text" id="country-error">Please enter your country</div>
+                        </div>
+                        <div class="form-col">
+                            <label for="website">Organization Website</label>
+                            <input type="url" id="website" name="website" placeholder="https://www.example.org">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information Section -->
+                <div class="form-section">
+                    <h3 class="section-title">Contact Information</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="firstName">First Name <span class="required">*</span></label>
+                            <input type="text" id="firstName" name="firstName" required>
+                            <div class="error-text" id="firstName-error">Please enter your first name</div>
+                        </div>
+                        <div class="form-col">
+                            <label for="lastName">Last Name <span class="required">*</span></label>
+                            <input type="text" id="lastName" name="lastName" required>
+                            <div class="error-text" id="lastName-error">Please enter your last name</div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error-text" id="email-error">Please enter a valid email address</div>
+                        </div>
+                        <div class="form-col">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title <span class="required">*</span></label>
+                        <input type="text" id="jobTitle" name="jobTitle" required>
+                        <div class="error-text" id="jobTitle-error">Please enter your job title</div>
+                    </div>
+                </div>
+
+                <!-- Training Requirements Section -->
+                <div class="form-section">
+                    <h3 class="section-title">Training Requirements</h3>
+                    
+                    <div class="form-group">
+                        <label for="trainingTopic">Training Topic <span class="required">*</span></label>
+                        <select id="trainingTopic" name="trainingTopic" required>
+                            <option value="">Select training topic</option>
+                            <option value="Data Analysis and Visualization">Data Analysis and Visualization</option>
+                            <option value="Development Finance">Development Finance</option>
+                            <option value="Data Journalism">Data Journalism</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="error-text" id="trainingTopic-error">Please select a training topic</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Preferred Training Delivery Method <span class="required">*</span></label>
+                        <div class="training-options">
+                                                         <!-- Online Training -->
+                             <div class="training-option" data-type="online">
+                                 <div class="option-title">Online Training</div>
+                                 <div class="option-description">
+                                     Fully remote, self-paced or instructor-led virtual sessions accessible from anywhere.
+                                 </div>
+                             </div>
+
+                                                         <!-- Multimodal Training -->
+                             <div class="training-option" data-type="multimodal">
+                                 <div class="option-title">Multimodal Training</div>
+                                 <div class="option-description">
+                                     Blended approach combining online components with in-person workshops and activities.
+                                 </div>
+                             </div>
+
+                                                         <!-- In-Person Training -->
+                             <div class="training-option" data-type="in-person">
+                                 <div class="option-title">In-Person Training</div>
+                                 <div class="option-description">
+                                     Traditional classroom-style training delivered at your location or designated venue.
+                                 </div>
+                             </div>
+                        </div>
+                        <input type="hidden" id="trainingDelivery" name="trainingDelivery" required>
+                        <div class="error-text" id="trainingDelivery-error">Please select a training delivery method</div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="participantCount">Expected Number of Participants <span class="required">*</span></label>
+                            <select id="participantCount" name="participantCount" required>
+                                <option value="">Select participant count</option>
+                                <option value="1-5 participants">1-5 participants</option>
+                                <option value="6-15 participants">6-15 participants</option>
+                                <option value="16-25 participants">16-25 participants</option>
+                                <option value="26-50 participants">26-50 participants</option>
+                                <option value="51-100 participants">51-100 participants</option>
+                                <option value="100+ participants">100+ participants</option>
+                            </select>
+                            <div class="error-text" id="participantCount-error">Please select participant count</div>
+                        </div>
+                        <div class="form-col">
+                            <label for="timeline">Preferred Timeline <span class="required">*</span></label>
+                            <select id="timeline" name="timeline" required>
+                                <option value="">Select timeline</option>
+                                <option value="Within 1 month">Within 1 month</option>
+                                <option value="1-3 months">1-3 months</option>
+                                <option value="3-6 months">3-6 months</option>
+                                <option value="6-12 months">6-12 months</option>
+                                <option value="Flexible">Flexible</option>
+                            </select>
+                            <div class="error-text" id="timeline-error">Please select preferred timeline</div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- Additional Information Section -->
+                <div class="form-section">
+                    <h3 class="section-title">Additional Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="additionalInfo">Additional Comments or Requirements</label>
+                        <textarea id="additionalInfo" name="additionalInfo" placeholder="Any other information that would help us understand your training needs..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hearAbout">How did you hear about AidData Training?</label>
+                        <select id="hearAbout" name="hearAbout">
+                            <option value="">Please select</option>
+                            <option value="AidData Website">AidData Website</option>
+                            <option value="Professional Network">Professional Network</option>
+                            <option value="Conference/Event">Conference/Event</option>
+                            <option value="Social Media">Social Media</option>
+                            <option value="Partner Organization">Partner Organization</option>
+                            <option value="Previous Training Participant">Previous Training Participant</option>
+                            <option value="Online Search">Online Search</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="submit-container">
+                    <button type="submit" class="submit-btn" id="submitBtn">Submit Inquiry</button>
+                    <div class="loading" id="loading">Submitting your inquiry...</div>
+                    <div class="success-message" id="successMessage">
+                        <strong>Inquiry Submitted Successfully!</strong><br>
+                        Thank you for your interest in AidData's professional development training. We have received your inquiry and will contact you within 2-3 business days to discuss your requirements and provide a customized proposal.
+                        <br><br>
+                        <strong>Need to discuss your requirements sooner?</strong><br>
+                        <a href="https://calendly.com/training-aiddata/30min" target="_blank" style="color: #115740; text-decoration: underline; font-weight: 500;">Schedule a 30-minute consultation call</a> to speak directly with our training team about your specific needs.
+                    </div>
+                    <div class="error-message" id="errorMessage">
+                        <strong>Submission Error</strong><br>
+                        There was an error submitting your inquiry. Please check your internet connection and try again. If the problem persists, please contact us directly at <a href="mailto:training@aiddata.org">training@aiddata.org</a>.
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Questions about professional development training?</p>
+            <p>
+                Email us at <a href="mailto:training@aiddata.org">training@aiddata.org</a> | 
+                Visit our <a href="https://aiddata.org/training">website</a>
+            </p>
+            
+            <div class="footer-divider"></div>
+            
+            <div>
+                <a href="https://www.wm.edu">
+                    <img src="https://cdn.prod.website-files.com/5914719ba6e62162556bd443/59d445067eedf20001205357_wm_vertical_single_line_white.png" alt="William & Mary" class="wm-logo" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize EmailJS
+        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+
+        // Global variables
+        let selectedTrainingType = '';
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTrainingSelection();
+            initializeFormValidation();
+        });
+
+        // Training selection functionality
+        function initializeTrainingSelection() {
+            const trainingOptions = document.querySelectorAll('.training-option');
+            
+            trainingOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    trainingOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Get training type
+                    selectedTrainingType = this.dataset.type;
+                    
+                    // Set hidden field value
+                    document.getElementById('trainingDelivery').value = selectedTrainingType;
+                    
+                    // Clear any error
+                    const errorElement = document.getElementById('trainingDelivery-error');
+                    if (errorElement) {
+                        errorElement.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Form validation functions
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validateField(field) {
+            const value = field.value.trim();
+            const fieldName = field.name;
+            const errorElement = document.getElementById(fieldName + '-error');
+            
+            let isValid = true;
+            let errorMessage = '';
+
+            // Check if required field is empty
+            if (field.hasAttribute('required') && !value) {
+                isValid = false;
+                errorMessage = 'This field is required';
+            }
+            
+            // Specific validation for email
+            if (fieldName === 'email' && value && !validateEmail(value)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid email address';
+            }
+
+            // Show/hide error
+            if (isValid) {
+                field.classList.remove('invalid');
+                if (errorElement) errorElement.style.display = 'none';
+            } else {
+                field.classList.add('invalid');
+                if (errorElement) {
+                    errorElement.textContent = errorMessage;
+                    errorElement.style.display = 'block';
+                }
+            }
+
+            return isValid;
+        }
+
+        // Add real-time validation
+        function initializeFormValidation() {
+            document.querySelectorAll('input, select, textarea').forEach(field => {
+                field.addEventListener('blur', () => validateField(field));
+                field.addEventListener('input', () => {
+                    if (field.classList.contains('invalid')) {
+                        validateField(field);
+                    }
+                });
+            });
+        }
+
+        // Form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('professionalForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Validate training delivery selection
+                if (!selectedTrainingType) {
+                    const errorElement = document.getElementById('trainingDelivery-error');
+                    if (errorElement) {
+                        errorElement.style.display = 'block';
+                        errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    return;
+                }
+
+                // Validate all fields
+                let isFormValid = true;
+                const requiredFields = this.querySelectorAll('[required]');
+                
+                requiredFields.forEach(field => {
+                    if (!validateField(field)) {
+                        isFormValid = false;
+                    }
+                });
+
+                if (!isFormValid) {
+                    // Scroll to first invalid field
+                    const firstInvalid = this.querySelector('.invalid');
+                    if (firstInvalid) {
+                        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        firstInvalid.focus();
+                    }
+                    return;
+                }
+
+                // Prepare form data
+                const formData = new FormData(this);
+                const data = {};
+                for (let [key, value] of formData.entries()) {
+                    if (data[key]) {
+                        // Handle multiple values (like checkboxes)
+                        if (Array.isArray(data[key])) {
+                            data[key].push(value);
+                        } else {
+                            data[key] = [data[key], value];
+                        }
+                    } else {
+                        data[key] = value;
+                    }
+                }
+
+                // Convert arrays to strings for email
+                Object.keys(data).forEach(key => {
+                    if (Array.isArray(data[key])) {
+                        data[key] = data[key].join(', ');
+                    }
+                });
+
+                // Show loading state
+                const submitBtn = document.getElementById('submitBtn');
+                const loading = document.getElementById('loading');
+                const successMessage = document.getElementById('successMessage');
+                const errorMessage = document.getElementById('errorMessage');
+
+                submitBtn.disabled = true;
+                loading.style.display = 'block';
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+
+                try {
+                    // Send email using EmailJS
+                    const response = await emailjs.send(
+                        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+                        'YOUR_PROFESSIONAL_TEMPLATE_ID', // Replace with your professional development template ID
+                        {
+                            to_email: 'training@aiddata.org',
+                            from_name: data.firstName + ' ' + data.lastName,
+                            from_email: data.email,
+                            subject: 'Professional Development Training Inquiry - ' + data.organizationName,
+                            
+                            // Organization Information
+                            organization_name: data.organizationName,
+                            organization_type: data.organizationType,
+                            organization_size: data.organizationSize || 'Not specified',
+                            country: data.country,
+                            website: data.website || 'Not provided',
+                            
+                            // Contact Information
+                            first_name: data.firstName,
+                            last_name: data.lastName,
+                            email: data.email,
+                            phone: data.phone || 'Not provided',
+                            job_title: data.jobTitle,
+                            
+                            // Training Requirements
+                            training_topic: data.trainingTopic,
+                            training_delivery: selectedTrainingType,
+                            participant_count: data.participantCount,
+                            timeline: data.timeline,
+                            
+                            // Additional Information
+                            additional_info: data.additionalInfo || 'None provided',
+                            hear_about: data.hearAbout || 'Not specified',
+                            
+                            // Timestamp
+                            submission_date: new Date().toLocaleString()
+                        }
+                    );
+
+                    // Show success message
+                    loading.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    this.reset();
+                    
+                    // Reset training selection
+                    document.querySelectorAll('.training-option').forEach(opt => 
+                        opt.classList.remove('selected')
+                    );
+                    selectedTrainingType = '';
+                    
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+
+                } catch (error) {
+                    console.error('Error sending email:', error);
+                    
+                    // Show error message
+                    loading.style.display = 'none';
+                    errorMessage.style.display = 'block';
+                    submitBtn.disabled = false;
+                    errorMessage.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
