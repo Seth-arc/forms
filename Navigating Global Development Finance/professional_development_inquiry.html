@@ -580,93 +580,129 @@
                 padding-right: 15px;
             }
 
-            /* Slide responsive styles */
+            /* Improved slide responsive styles */
             .slide {
-                padding: 15px;
-                top: 60px;
-                bottom: 140px;
+                padding: 20px 15px;
+                top: 70px;
+                bottom: 160px;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .slide h2 {
-                font-size: 24px;
-                margin-bottom: 15px;
+                font-size: 28px;
+                margin-bottom: 20px;
+                text-align: center;
+                line-height: 1.3;
             }
 
             .slide p {
-                font-size: 15px;
-                margin-bottom: 15px;
-                line-height: 1.5;
+                font-size: 16px;
+                margin-bottom: 20px;
+                line-height: 1.6;
+                text-align: left;
             }
 
             .slide-content {
                 max-width: 100%;
                 width: 100%;
+                padding: 0;
+                min-height: auto;
+                display: block;
             }
 
             .slide-columns {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                margin: 20px 0;
+                display: block;
+                gap: 25px;
+                margin: 25px 0;
             }
 
             .slide-column {
-                padding: 15px;
+                padding: 20px 15px;
+                margin-bottom: 25px;
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                border: 1px solid #e9ecef;
             }
 
             .slide-column h3 {
-                font-size: 18px;
-                margin-bottom: 10px;
+                font-size: 20px;
+                margin-bottom: 15px;
+                text-align: center;
             }
 
             .slide-column p {
-                font-size: 14px;
+                font-size: 15px;
                 margin-bottom: 15px;
+                line-height: 1.6;
             }
 
             .slide-image {
-                height: 140px;
+                width: 100%;
+                height: auto;
+                margin: 15px 0 12px 0;
+                max-height: 200px;
                 object-fit: cover;
+                border-radius: 8px;
+                display: block;
             }
 
             .slide-caption {
-                font-size: 12px;
-                line-height: 1.3;
+                font-size: 13px;
+                margin-top: 10px;
+                line-height: 1.4;
+                color: #666;
+                font-style: italic;
             }
 
             .slide-header {
-                padding: 12px 15px;
-                height: 60px;
+                padding: 15px;
+                height: 70px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                background-color: #ffffff;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             }
 
             .slide-header .logo {
-                height: 26px;
+                height: 28px;
             }
 
             .slide-navigation {
-                padding: 15px;
+                padding: 20px 15px;
                 flex-direction: column-reverse;
-                gap: 12px;
-                height: 140px;
+                gap: 15px;
+                height: 160px;
                 justify-content: center;
                 align-items: center;
+                background-color: #ffffff;
+                box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
             }
 
             .nav-btn {
                 width: 100%;
-                max-width: 300px;
-                padding: 14px 20px;
-                font-size: 15px;
-                min-height: 48px;
+                max-width: 320px;
+                padding: 16px 24px;
+                font-size: 16px;
+                min-height: 52px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                border-radius: 8px;
+                font-weight: 500;
             }
 
             .progress-indicator {
+                gap: 10px;
+                margin: 0;
+                order: 2;
                 justify-content: center;
+            }
+
+            .progress-dot {
+                width: 14px;
+                height: 14px;
             }
 
             .form-container {
@@ -743,75 +779,121 @@
                 font-size: 24px;
             }
 
-            /* Additional slide responsive styles for small screens */
+            /* Enhanced slide responsive styles for small screens */
             .slide {
-                padding: 10px;
-                top: 55px;
-                bottom: 120px;
+                padding: 15px 10px;
+                top: 65px;
+                bottom: 140px;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
             }
 
             .slide h2 {
-                font-size: 20px;
-                margin-bottom: 12px;
+                font-size: 24px;
+                margin-bottom: 18px;
+                text-align: center;
+                line-height: 1.3;
             }
 
             .slide p {
-                font-size: 14px;
-                margin-bottom: 12px;
-                line-height: 1.4;
+                font-size: 15px;
+                margin-bottom: 18px;
+                line-height: 1.5;
+                text-align: left;
             }
 
             .slide-columns {
-                gap: 12px;
-                margin: 15px 0;
+                display: block;
+                gap: 20px;
+                margin: 20px 0;
             }
 
             .slide-column {
-                padding: 12px;
+                padding: 18px 12px;
+                margin-bottom: 20px;
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                border: 1px solid #e9ecef;
             }
 
             .slide-column h3 {
-                font-size: 16px;
-                margin-bottom: 8px;
+                font-size: 18px;
+                margin-bottom: 12px;
+                text-align: center;
             }
 
             .slide-column p {
-                font-size: 13px;
-                margin-bottom: 12px;
+                font-size: 14px;
+                margin-bottom: 15px;
+                line-height: 1.5;
             }
 
             .slide-image {
-                height: 100px;
+                width: 100%;
+                height: auto;
+                margin: 12px 0 10px 0;
+                max-height: 160px;
+                object-fit: cover;
+                border-radius: 6px;
+                display: block;
             }
 
             .slide-caption {
-                font-size: 11px;
+                font-size: 12px;
+                margin-top: 8px;
+                line-height: 1.4;
+                color: #666;
+                font-style: italic;
                 line-height: 1.2;
             }
 
             .slide-header {
-                padding: 8px 10px;
-                height: 55px;
-            }
-
-            .slide-header .logo {
-                height: 22px;
-            }
-
-            .slide-navigation {
                 padding: 12px 10px;
-                height: 120px;
-                gap: 10px;
-            }
-
-            .nav-btn {
-                padding: 12px 15px;
-                font-size: 14px;
-                max-width: 280px;
-                min-height: 44px;
+                height: 65px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                background-color: #ffffff;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .slide-header .logo {
+                height: 24px;
+            }
+
+            .slide-navigation {
+                padding: 15px 10px;
+                height: 140px;
+                gap: 12px;
+                flex-direction: column-reverse;
+                justify-content: center;
+                align-items: center;
+                background-color: #ffffff;
+                box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+            }
+
+            .nav-btn {
+                padding: 14px 20px;
+                font-size: 15px;
+                max-width: 300px;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 6px;
+                font-weight: 500;
+                width: 100%;
+            }
+
+            .progress-indicator {
+                gap: 8px;
+                margin: 0;
+                order: 2;
+            }
+
+            .progress-dot {
+                width: 12px;
+                height: 12px;
             }
 
             .progress-dot {

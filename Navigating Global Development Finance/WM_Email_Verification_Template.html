@@ -1,0 +1,93 @@
+<!-- W&M Email Verification Template for EmailJS -->
+<div style="max-width: 610px; margin: 0 auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #2c3e50; background-color: #ffffff;">
+  
+  <!-- Header with Logo -->
+  <div style="padding: 30px 30px 20px 30px;">
+    <a href="https://aiddata.org" style="text-decoration: none;">
+      <img src="https://raw.githubusercontent.com/Seth-arc/scorms/main/Course_thumbnails/5e3c81fee74fc1743cc5f355_AidData_Logo--full_color.png" alt="AidData" style="height: 35px; width: auto;" />
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <div style="padding: 0 30px 40px 30px; background-color: #ffffff;">
+    
+    <!-- Welcome Message -->
+    <div style="margin-bottom: 40px; text-align: center;">
+      <div style="max-width: 500px; margin: 0 auto;">
+        <h2 style="color: #115740; margin: 0 0 25px 0; font-size: 32px; font-weight: 300; line-height: 1.1; letter-spacing: -0.5px;">Email Verification Required</h2>
+        <div style="width: 60px; height: 2px; background-color: #115740; margin: 0 auto 30px auto; opacity: 0.3;"></div>
+        <p style="margin: 0; font-size: 16px; color: #555; line-height: 1.6; font-weight: 300;">Please verify your William & Mary email address to continue with your scholarship application.</p>
+      </div>
+    </div>
+
+    <!-- Verification Code Section -->
+    <div style="text-align: center; margin-bottom: 30px; padding: 40px 30px; background-color: #f8f9fa; border-radius: 12px; border: 1px solid #e9ecef;">
+      <h3 style="color: #115740; margin: 0 0 20px 0; font-size: 24px; font-weight: 400;">Your Verification Code</h3>
+      
+      <!-- Large verification code display -->
+      <div style="background-color: #ffffff; border: 2px solid #115740; border-radius: 8px; padding: 20px; margin: 20px auto; max-width: 200px;">
+        <div style="font-size: 32px; font-weight: 600; color: #115740; letter-spacing: 4px; text-align: center;">{{verification_code}}</div>
+      </div>
+      
+      <p style="margin: 20px 0 0 0; font-size: 14px; color: #666; line-height: 1.5;">Enter this 6-digit code in the scholarship application form to verify your W&M email address.</p>
+    </div>
+
+    <!-- Instructions -->
+    <div style="margin-bottom: 40px;">
+      <h4 style="color: #115740; margin: 0 0 20px 0; font-size: 20px; font-weight: 400; text-align: center;">Next Steps</h4>
+      <div style="background-color: #fcfcfc; padding: 25px; border-radius: 8px; border: 1px solid #e9ecef;">
+        <ol style="margin: 0; padding-left: 20px; color: #555; line-height: 1.8;">
+          <li style="margin-bottom: 10px;">Return to the scholarship application form</li>
+          <li style="margin-bottom: 10px;">Enter the 6-digit verification code above</li>
+          <li style="margin-bottom: 10px;">Click "Verify Code" to continue</li>
+          <li>Complete your scholarship application</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Important Notes -->
+    <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
+      <h5 style="color: #856404; margin: 0 0 10px 0; font-size: 16px; font-weight: 500;">Important Notes:</h5>
+      <ul style="margin: 0; padding-left: 20px; color: #856404; font-size: 14px; line-height: 1.6;">
+        <li style="margin-bottom: 8px;">This verification code expires in 10 minutes</li>
+        <li style="margin-bottom: 8px;">Use this code only for your current application session</li>
+        <li>If you didn't request this code, please ignore this email</li>
+      </ul>
+    </div>
+
+    <!-- Support Section -->
+    <div style="text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 8px; border: 1px solid #e9ecef;">
+      <h5 style="color: #115740; margin: 0 0 15px 0; font-size: 18px; font-weight: 500;">Need Help?</h5>
+      <p style="margin: 0 0 15px 0; color: #666; font-size: 14px; line-height: 1.5;">Having trouble with the verification process?</p>
+      <p style="margin: 0; color: #666; font-size: 14px;">
+        Contact us at <a href="mailto:training@aiddata.org" style="color: #115740; text-decoration: underline;">training@aiddata.org</a>
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div style="background-color: #115740; padding: 25px 30px; text-align: center;">
+    <p style="margin: 0 0 10px 0; color: white; font-size: 14px;">AidData Training Scholarship Program</p>
+    <p style="margin: 0 0 25px 0; color: white; font-size: 12px;">
+      Visit our <a href="https://aiddata.org/training" style="color: #C8A882; text-decoration: underline;">training website</a> for more information
+    </p>
+    
+    <!-- Horizontal line -->
+    <div style="width: 100%; height: 1px; background-color: rgba(255,255,255,0.3); margin: 0 0 25px 0;"></div>
+    
+    <!-- William & Mary Logo -->
+    <div style="text-align: center;">
+      <a href="https://www.wm.edu" style="text-decoration: none;">
+        <img src="https://cdn.prod.website-files.com/5914719ba6e62162556bd443/59d445067eedf20001205357_wm_vertical_single_line_white.png" alt="William & Mary" style="height: 60px; width: auto;" />
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- EmailJS Template Variables Used:
+{{verification_code}} - The 6-digit verification code
+{{to_email}} - Recipient email address (automatically handled by EmailJS)
+{{subject}} - Email subject (set in JavaScript)
+-->
