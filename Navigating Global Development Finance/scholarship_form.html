@@ -1541,10 +1541,12 @@
                         'service_fg5k8q8',
                         'template_b8otaj6',
                         {
+                            user_email: 'training@aiddata.org',
                             to_email: 'training@aiddata.org',
                             from_name: data.firstName + ' ' + data.lastName,
                             from_email: data.email,
-                            subject: `${data.scholarshipType === 'wm' ? 'W&M Affiliation' : 'Global South'} Scholarship Application`,
+                            reply_to: data.email,
+                            subject: `AidData Scholarship Application - ${data.firstName} ${data.lastName}`,
                             
                             // Scholarship Information
                             scholarship_type: data.scholarshipType === 'wm' ? 'W&M Affiliation' : 'Global South',
@@ -1588,9 +1590,10 @@
                         'service_fg5k8q8',
                         'template_xvb981w',
                         {
+                            user_email: data.email,
                             to_email: data.email,
                             from_name: 'AidData Training Team',
-                            from_email: 'training@aiddata.org',
+                            reply_to: 'training@aiddata.org',
                             subject: 'Scholarship Application Confirmation',
                             
                             // User-relevant information only
