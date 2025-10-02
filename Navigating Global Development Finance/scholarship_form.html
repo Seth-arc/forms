@@ -1203,10 +1203,10 @@
                     'template_03qvsva', // W&M verification template ID
                     {
                         to_email: email,
-                        verification_code: verificationCode,
+                        to_name: 'W&M Community Member',
                         from_name: 'AidData Training Team',
-                        from_email: 'training@aiddata.org',
-                        subject: 'W&M Scholarship Application - Verification Code'
+                        verification_code: verificationCode,
+                        message: `Your verification code is: ${verificationCode}`
                     }
                 );
 
