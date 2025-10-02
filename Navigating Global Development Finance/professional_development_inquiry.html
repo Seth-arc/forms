@@ -1063,7 +1063,7 @@
             <div class="slide active" id="slide1">
                 <div class="slide-content">
                     <h2>Welcome to AidData Training</h2>
-                    <p>Traditional training methods—lectures, presentations, and theoretical discussions—have their place. But when it comes to preparing professionals to handle the interconnected challenges of modern work environments, they often fall short. Real-world problems rarely arrive neatly packaged with clear solutions. Instead, they involve multiple stakeholders, competing priorities, and high levels of uncertainty.</p>
+                    <p>Traditional training methods such as lectures, presentations, and theoretical discussions have their place. But when it comes to preparing professionals to handle the interconnected challenges of data-intensive work environments, they often fall short. Real-world problems rarely arrive neatly packaged with clear solutions. Instead, they involve multiple stakeholders, competing priorities, and high levels of uncertainty.</p>
                 </div>
             </div>
 
@@ -1080,7 +1080,7 @@
                         </div>
                         <div class="slide-column">
                             <center><h3>Innovative Strategies</h3></center>
-                            <p>Technology-based delivery is used to ensure learners can effectively interpret data and implement solutions in real-world scenarios.</p>
+                            <p>Multimodal and technology-based delivery are used to ensure learners can effectively interpret data and implement solutions in real-world scenarios.</p>
                             <img src="assets/image_2 (innovative strategies).jpg" alt="Data journalism simulation" class="slide-image">
                             <div class="slide-caption">Sethu Nguna, AidData: Manager, Training and Instructional Design Manager leading a data journalism simulation session.</div>
                         </div>
@@ -1092,7 +1092,7 @@
             <div class="slide" id="slide3">
                 <div class="slide-content">
                     <h2>Beyond Traditional Training</h2>
-                    <p>AidData employs a hybrid model that combines foundational online courses, delivered through the William & Mary's Studio for Teaching and Learning Innovation, with engaging in-person workshops, simulations, and policy dialogues led by AidData subject matter experts.</p>
+                    <p>AidData employs a hybrid model that combines foundational online courses, delivered in partnership with the William & Mary's Studio for Teaching and Learning Innovation, with engaging deep-dive workshops and practical online simulations led by AidData subject matter experts.</p>
                    
                 </div>
             </div>
@@ -1498,7 +1498,8 @@
 
         // Form validation functions
         function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // More comprehensive email validation that properly handles wm.edu and other domains
+            const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
             return re.test(email);
         }
 
