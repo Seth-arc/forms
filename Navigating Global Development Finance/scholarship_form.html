@@ -1200,10 +1200,12 @@
                 // Send verification email using EmailJS
                 await emailjs.send(
                     'service_fg5k8q8', // Your EmailJS service ID
-                    'template_wm_verify', // W&M verification template ID
+                    'template_03qvsva', // W&M verification template ID
                     {
                         to_email: email,
                         verification_code: verificationCode,
+                        from_name: 'AidData Training Team',
+                        from_email: 'training@aiddata.org',
                         subject: 'W&M Scholarship Application - Verification Code'
                     }
                 );
