@@ -785,7 +785,7 @@
             <div class="page-title">
                 <h1>Scholarship Application</h1>
                 <div class="divider"></div>
-                <p>Apply to join our Navigating Global Development Finance course. We offer two scholarship programs for eligible participants.</p>
+                <p>Apply to join our Navigating Global Development Finance course.</p>
             </div>
 
             <!-- Scholarship Selection -->
@@ -814,6 +814,19 @@
                         <div class="option-requirements">
                             <strong>Requirements:</strong><br>
                             Location verification required with VPN usage not permitted.
+                            
+                        </div>
+                    </div>
+
+                    <!-- Global South Origin Scholarship -->
+                    <div class="scholarship-option" data-type="global-south-origin">
+                        <div class="option-title">Global South Origin Scholarship</div>
+                        <div class="option-description">
+                            For individuals of Global South origin who are currently based outside of Global South countries.
+                        </div>
+                        <div class="option-requirements">
+                            <strong>Requirements:</strong><br>
+                            Must be a citizen/national of a Global South country or have strong cultural ties. No location restrictions.
                             
                         </div>
                     </div>
@@ -872,6 +885,30 @@
                 <button type="button" id="backFromGSBtn" class="back-btn">Back to Scholarship Selection</button>
             </div>
 
+            <!-- Global South Origin Verification -->
+            <div id="globalSouthOriginVerification" class="verification-section">
+                <h3 class="verification-title">Global South Scholarship</h3>
+                <div class="verification-step">
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="originEligibility1">
+                            <label for="originEligibility1">I am a citizen/national of a Global South country OR have strong cultural ties to one</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="originEligibility2">
+                            <label for="originEligibility2">I am currently residing outside of Global South countries</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="originEligibility3">
+                            <label for="originEligibility3">I can provide detailed information about my Global South background in the application</label>
+                        </div>
+                    </div>
+                    <div id="originEligibilityStatus" style="margin-top: 15px;"></div>
+                </div>
+                
+                <button type="button" id="continueGSOBtn" class="continue-btn" style="display: none;">Continue to Application</button>
+            </div>
+
             <!-- Application Form -->
             <form id="scholarshipForm" class="form-container hidden">
                 <!-- Hidden field to track scholarship type -->
@@ -910,7 +947,7 @@
 
                     <div class="form-row">
                         <div class="form-col">
-                            <label for="country">Country <span class="required">*</span></label>
+                            <label for="country">Country of Residence <span class="required">*</span></label>
                             <select id="country" name="country" required>
                                 <!-- Options will be dynamically populated by JavaScript -->
                                 <option value="">Select your country</option>
@@ -921,6 +958,48 @@
                             <label for="city">City</label>
                             <input type="text" id="city" name="city">
                         </div>
+                    </div>
+                </div>
+
+                <!-- Global South Origin Information Section (only shown for global-south-origin scholarship) -->
+                <div class="form-section" id="globalSouthOriginSection" style="display: none;">
+                    <h3 class="section-title">Global South Origin Information</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label for="originCountry">Country of Origin/Citizenship <span class="required">*</span></label>
+                            <select id="originCountry" name="originCountry">
+                                <option value="">Select your country of origin</option>
+                                <!-- Options will be dynamically populated by JavaScript -->
+                            </select>
+                            <div class="error-text" id="originCountry-error">Please select your country of origin</div>
+                        </div>
+                        <div class="form-col">
+                            <label for="birthCountry">Country of Birth</label>
+                            <select id="birthCountry" name="birthCountry">
+                                <option value="">Select your country of birth</option>
+                                <!-- Options will be dynamically populated by JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="connectionToGlobalSouth">Describe your connection to the Global South <span class="required">*</span></label>
+                        <textarea id="connectionToGlobalSouth" name="connectionToGlobalSouth" placeholder="Please explain your personal, cultural, or professional connection to Global South countries. Include details about your background, family ties, work experience, or other relevant connections..."></textarea>
+                        <div class="error-text" id="connectionToGlobalSouth-error">Please describe your connection to the Global South</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeOutsideGlobalSouth">How long have you been living outside of Global South countries?</label>
+                        <select id="timeOutsideGlobalSouth" name="timeOutsideGlobalSouth">
+                            <option value="">Please select</option>
+                            <option value="Less than 1 year">Less than 1 year</option>
+                            <option value="1-2 years">1-2 years</option>
+                            <option value="3-5 years">3-5 years</option>
+                            <option value="6-10 years">6-10 years</option>
+                            <option value="More than 10 years">More than 10 years</option>
+                            <option value="Born outside but maintain connections">Born outside but maintain strong connections</option>
+                        </select>
                     </div>
                 </div>
 
@@ -968,6 +1047,17 @@
                             <option value="Other">Other</option>
                         </select>
                         <div class="error-text" id="sector-error">Please select your sector</div>
+                    </div>
+
+                    <div class="form-group" id="globalSouthWorkSection" style="display: none;">
+                        <label for="globalSouthWork">Do you work on issues related to Global South countries?</label>
+                        <select id="globalSouthWork" name="globalSouthWork">
+                            <option value="">Please select</option>
+                            <option value="Yes, primarily">Yes, my work primarily focuses on Global South issues</option>
+                            <option value="Yes, partially">Yes, part of my work involves Global South issues</option>
+                            <option value="No, but interested">No, but I'm interested in Global South development</option>
+                            <option value="No">No, my work is not related to Global South issues</option>
+                        </select>
                     </div>
                 </div>
 
@@ -1107,6 +1197,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             initializeScholarshipSelection();
             populateCountryDropdown();
+            populateOriginCountryDropdowns();
         });
 
         // Populate country dropdown with all eligible Global South countries
@@ -1127,12 +1218,34 @@
                 option.textContent = country;
                 countrySelect.appendChild(option);
             });
+        }
 
-            // Add "Other" option at the end
-            const otherOption = document.createElement('option');
-            otherOption.value = 'Other';
-            otherOption.textContent = 'Other';
-            countrySelect.appendChild(otherOption);
+        // Populate origin country dropdowns for Global South Origin scholarship
+        function populateOriginCountryDropdowns() {
+            const originCountrySelect = document.getElementById('originCountry');
+            const birthCountrySelect = document.getElementById('birthCountry');
+            
+            if (!originCountrySelect || !birthCountrySelect) return;
+
+            // Clear existing options except the first one
+            originCountrySelect.innerHTML = '<option value="">Select your country of origin</option>';
+            birthCountrySelect.innerHTML = '<option value="">Select your country of birth</option>';
+
+            // Sort all Global South countries alphabetically
+            const sortedGlobalSouthCountries = allGlobalSouthCountries.sort();
+
+            // Add Global South countries only
+            sortedGlobalSouthCountries.forEach(country => {
+                const originOption = document.createElement('option');
+                originOption.value = country;
+                originOption.textContent = country;
+                originCountrySelect.appendChild(originOption);
+
+                const birthOption = document.createElement('option');
+                birthOption.value = country;
+                birthOption.textContent = country;
+                birthCountrySelect.appendChild(birthOption);
+            });
         }
 
         // Scholarship selection functionality
@@ -1171,6 +1284,9 @@
             } else if (type === 'global-south') {
                 document.getElementById('globalSouthVerification').classList.add('active');
                 initializeLocationVerification();
+            } else if (type === 'global-south-origin') {
+                document.getElementById('globalSouthOriginVerification').classList.add('active');
+                initializeOriginVerification();
             }
         }
 
@@ -1254,6 +1370,33 @@
             checkUserLocation();
             document.getElementById('continueGSBtn').addEventListener('click', showApplicationForm);
             document.getElementById('backFromGSBtn').addEventListener('click', resetToScholarshipSelection);
+        }
+
+        // Global South Origin Verification
+        function initializeOriginVerification() {
+            const checkboxes = document.querySelectorAll('#globalSouthOriginVerification input[type="checkbox"]');
+            const continueBtn = document.getElementById('continueGSOBtn');
+            const backBtn = document.getElementById('backFromGSOBtn');
+            const statusDiv = document.getElementById('originEligibilityStatus');
+
+            function checkEligibility() {
+                const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+                
+                if (allChecked) {
+                    showStatus(statusDiv, 'success', 'Great! You meet the eligibility criteria for the Global South Origin scholarship.');
+                    continueBtn.style.display = 'block';
+                } else {
+                    statusDiv.innerHTML = '';
+                    continueBtn.style.display = 'none';
+                }
+            }
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', checkEligibility);
+            });
+
+            continueBtn.addEventListener('click', showApplicationForm);
+            backBtn.addEventListener('click', resetToScholarshipSelection);
         }
 
         async function checkUserLocation() {
@@ -1386,12 +1529,42 @@
             // Set scholarship type in hidden field
             document.getElementById('scholarshipType').value = selectedScholarshipType;
 
+            // Show/hide sections based on scholarship type
+            const globalSouthOriginSection = document.getElementById('globalSouthOriginSection');
+            const globalSouthWorkSection = document.getElementById('globalSouthWorkSection');
+            
+            if (selectedScholarshipType === 'global-south-origin') {
+                // Show Global South Origin specific sections
+                if (globalSouthOriginSection) globalSouthOriginSection.style.display = 'block';
+                if (globalSouthWorkSection) globalSouthWorkSection.style.display = 'block';
+                
+                // Make Global South Origin fields required
+                const originRequiredFields = ['originCountry', 'connectionToGlobalSouth'];
+                originRequiredFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (field) field.setAttribute('required', 'required');
+                });
+            } else {
+                // Hide Global South Origin specific sections
+                if (globalSouthOriginSection) globalSouthOriginSection.style.display = 'none';
+                if (globalSouthWorkSection) globalSouthWorkSection.style.display = 'none';
+                
+                // Remove required attribute from Global South Origin fields
+                const originFields = ['originCountry', 'connectionToGlobalSouth'];
+                originFields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    if (field) field.removeAttribute('required');
+                });
+            }
+
             // Show application form
             document.getElementById('scholarshipForm').classList.remove('hidden');
             
             // Update form title based on scholarship type
             const formTitle = selectedScholarshipType === 'wm' ? 
                 'W&M Affiliation Scholarship Application' : 
+                selectedScholarshipType === 'global-south-origin' ?
+                'Global South Origin Scholarship Application' :
                 'Global South Scholarship Application';
             
             // Scroll to form
@@ -1435,6 +1608,13 @@
             document.getElementById('locationResults').style.display = 'none';
             document.getElementById('continueGSBtn').style.display = 'none';
             
+            // Clear Global South Origin verification
+            document.querySelectorAll('#globalSouthOriginVerification input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            document.getElementById('originEligibilityStatus').innerHTML = '';
+            document.getElementById('continueGSOBtn').style.display = 'none';
+            
             // Clear hidden form fields
             document.getElementById('scholarshipType').value = '';
             document.getElementById('verifiedEmail').value = '';
@@ -1472,6 +1652,12 @@
             if (fieldName === 'email' && value && !validateEmail(value)) {
                 isValid = false;
                 errorMessage = 'Please enter a valid email address';
+            }
+
+            // Specific validation for origin country (must be Global South)
+            if (fieldName === 'originCountry' && value && !allGlobalSouthCountries.includes(value)) {
+                isValid = false;
+                errorMessage = 'Please select a Global South country for your origin';
             }
 
             // Show/hide error
@@ -1558,9 +1744,16 @@
                             subject: `AidData Scholarship Application - ${data.firstName} ${data.lastName}`,
                             
                             // Scholarship Information
-                            scholarship_type: data.scholarshipType === 'wm' ? 'W&M Affiliation' : 'Global South',
+                            scholarship_type: data.scholarshipType === 'wm' ? 'W&M Affiliation' : 
+                                            data.scholarshipType === 'global-south-origin' ? 'Global South Origin' : 'Global South',
                             verified_email: data.verifiedEmail || 'N/A',
                             verified_location: data.verifiedLocation || 'N/A',
+                            
+                            // Global South Origin Information (if applicable)
+                            origin_country: data.originCountry || 'N/A',
+                            birth_country: data.birthCountry || 'N/A',
+                            connection_to_global_south: data.connectionToGlobalSouth || 'N/A',
+                            time_outside_global_south: data.timeOutsideGlobalSouth || 'N/A',
                             
                             // Personal Information
                             first_name: data.firstName,
@@ -1575,6 +1768,7 @@
                             position: data.position,
                             experience: data.experience || 'Not specified',
                             sector: data.sector,
+                            global_south_work: data.globalSouthWork || 'Not specified',
                             
                             // Education
                             education: data.education,
